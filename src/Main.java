@@ -29,13 +29,13 @@ public class Main {
         counts.add(6);
         counts.add(100);
         boolean mask[] = {true, true, true};
-        File textFile = new File("Basket.txt");
-        //File textFile = new File("Basket.bin");
+       // File textFile = new File("Basket.txt");
+        File textFile = new File("Basket.bin");
         Basket basket;
         if (textFile.exists()) {
             System.out.println("Exist!");
             //basket = basket.loadFromTxtFile(textFile);
-            basket = Basket.loadFromTxtFile(textFile);
+            basket = Basket.loadFromBinFile(textFile);
             for (int i = 0; i < N; ++i) {
                 boolean f = true;
                 for (int j = 0; j < basket.getSize(); ++j) {
@@ -52,11 +52,11 @@ public class Main {
                 }
             }
             //basket.saveTxt(textFile);
-            basket.saveTxt(textFile);
+            basket.saveBin(textFile);
         } else {
             System.out.println("Not exist!");
             basket = new Basket(prices, counts, products, N);
-            basket.saveTxt(textFile);
+            basket.saveBin(textFile);
         }
         basket.printCart();
     }
